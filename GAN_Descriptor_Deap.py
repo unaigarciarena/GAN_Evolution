@@ -46,6 +46,8 @@ def eval_gan_approx_igd(individual):
     global All_Evals
     global best_val
     global Eval_Records
+    global test1
+    global test2
 
     reset_graph(myseed)
 
@@ -62,7 +64,7 @@ def eval_gan_approx_igd(individual):
     nf1, nf2 = MOP_f.evaluate_mop_function(final_samples)
     tf1, tf2, _ = pareto_frontier(nf1, nf2)
 
-    igd_val = igd((np.vstack((tf1, tf2)).transpose(), np.vstack((pf1, pf2)).transpose()))[0]
+    igd_val = igd((np.vstack((tf1, tf2)).transpose(), np.vstack((test1, test2)).transpose()))[0]
     All_Evals = All_Evals+1
 
     gan_code = my_gan_descriptor.codify_components(nlayers, init_functions, act_functions, divergence_measures, lat_functions)
@@ -79,7 +81,7 @@ def eval_gan_approx_igd(individual):
         ax = fig.add_subplot(111)
         ax.set_xlabel('$f(x_1)$', fontsize=25)
         ax.set_ylabel('$f(x_2)$', fontsize=25)
-        plt.plot(pf1, pf2, 'b.')
+        plt.plot(test1, test2, 'b.')
         plt.subplots_adjust(hspace=0, wspace=0, left=0.2, right=1, bottom=0.16, top=1)
         plt.xticks(np.arange(0, np.max(nf1), 0.5), fontsize=20)
         plt.yticks(np.arange(0, np.max(nf1), 0.5), fontsize=20)
@@ -296,6 +298,8 @@ if __name__ == "__main__":  # Example python3 GAN_Descriptor_Deap.py 0 1000 10 1
     global All_Evals
     global best_val
     global Eval_Records
+    global test1
+    global test2
 
     All_Evals = 0
     best_val = 10000
@@ -326,7 +330,9 @@ if __name__ == "__main__":  # Example python3 GAN_Descriptor_Deap.py 0 1000 10 1
     k = 1000                                          # Number of samples of the Pareto set for computing approximation (k=1000)
     MOP_f = FFunctions(n, Function)                   # Creates a class containing details on MOP
     ps_all_x = MOP_f.generate_ps_samples(k)           # Generates k points from the Pareto Set
+    test = MOP_f.generate_ps_samples(k)
     pf1, pf2 = MOP_f.evaluate_mop_function(ps_all_x)  # Evaluate the points from the Pareto Set
+    test1, test2 = MOP_f.evaluate_mop_function(ps_all_x)
     X_dim = n                                         # Number of variables to approximate
 
     # List of activation functions the networks can use
