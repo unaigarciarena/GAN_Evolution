@@ -6,7 +6,7 @@ Garciarena, U., Santana, R., & Mendiburu, A. (2018, July). Evolved GANs for gene
 
 It has been improved since, adding more loss functions, reducing the number of networks that produced NaN values, and correcting some errors in variable scaling. For running the code, execute the following line:
 
-python3 GAN_Descriptor_Deap.py <seed> <points> <variables> <function> <z_size> <n_layers> <loop> <n_neurons> <pop_size> <n_gen> <sel_tipe> <cross> <sel_size>
+python3 GAN_Descriptor_Deap.py \<seed\> \<points\> \<variables\> \<function\> \<z_size\> \<n_layers\> \<loop\> \<n_neurons\> \<pop_size\> \<n_gen\> \<sel_tipe\> \<cross\> \<sel_size\>
   
 where 
 
