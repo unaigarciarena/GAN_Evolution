@@ -1,7 +1,0 @@
-To make a run of the program, utilize:
-
-python3 GAN_Descriptor_Deap.py <Seed> <Samples> <Variables> <F_index> <Z_dimension> <Max_layers> <Loops> <Max_neurons> <Population> <Generations> <Selection_method> <Crossover_prob> <Selected_pop_size> <Tournament_size (only used if selection method is tournament)>
-
-For example;
-
-python3 GAN_Descriptor_Deap.py 0 1000 10 1 30 10 5 50 10 2 0 90 10 0
